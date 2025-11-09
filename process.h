@@ -13,4 +13,4 @@ struct ProcInfo {
 
 std::vector<ProcInfo> getProcesses();
 
-#endif // PROCESS_H
+#endif 
