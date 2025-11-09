@@ -36,7 +36,7 @@ std::vector<ProcInfo> getProcesses() {
         std::string statline;
         std::getline(statf, statline);
 
-        // Extract the command in parentheses and the rest
+     
         size_t lp = statline.find('(');
         size_t rp = statline.rfind(')');
         std::string comm = "";
@@ -57,7 +57,7 @@ std::vector<ProcInfo> getProcesses() {
         unsigned long long utime = 0, stime = 0;
         long rss_pages = 0;
 
-        // fields after comm: state (1), then we need utime (13), stime (14), rss (22)
+       
         for (int i = 1; i <= 22; ++i) {
             if (!(rsss >> tok)) break;
             if (i == 13) utime = std::stoull(tok);
@@ -65,7 +65,7 @@ std::vector<ProcInfo> getProcesses() {
             if (i == 22) rss_pages = std::stol(tok);
         }
 
-        // Try cmdline for full command line (null-separated)
+       
         std::string cmdPath = "/proc/" + dname + "/cmdline";
         std::ifstream cmdf(cmdPath);
         std::string cmdline;
